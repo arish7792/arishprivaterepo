@@ -71,7 +71,8 @@ def start(config):
                     line5 = "Sell "+ target1+", "+ target2+", "+ target3+", "+ target4
                     line6 = "Stop "+stoploss
                     signalFinal = line1+"\n"+line2+"\n"+line3+"\n"+line4+"\n"+line5+"\n"+line6
-                    print(signalFinal)
+                    await client.send_message(output_channel, signalFinal)
+
                 else:
                     entry1 = str("{:.4f}".format(percentage(-0.2,currPrice)))
                     entry2 = str("{:.4f}".format(percentage(0.2,currPrice)))
@@ -87,9 +88,7 @@ def start(config):
                     line5 = "Sell "+ target1+", "+ target2+", "+ target3+", "+ target4
                     line6 = "Stop "+stoploss
                     signalFinal = line1+"\n"+line2+"\n"+line3+"\n"+line4+"\n"+line5+"\n"+line6
-                    print(signalFinal)
-
-                #await client.send_message(output_channel, event.message)
+                    await client.send_message(output_channel, signalFinal)
 
     client.run_until_disconnected()
 
