@@ -34,6 +34,7 @@ def start(config):
 
     @client.on(events.NewMessage(chats=input_channels_entities))
     async def handler(event):
+        count = 0
         for output_channel in output_channel_entities:
             if ("Take-Profit target 1" in event.text):
                 indexStart = event.text.index("Profit:") + len('Profit:') + 1
@@ -72,6 +73,7 @@ def start(config):
                 event.text = event.text.replace(percentage, percentage1)
                 await client.send_message(output_channel, event.message)
             elif ("Phemex, ftx" in event.text):
+                count = count+1
                 string = event.text.split()[0]
                 client.parse_mode = 'html'
                 newStr = "🤩 <b>PREMIUM GROUP SIGNAL ALERT</b> 🤩 \n \n " \
@@ -81,7 +83,8 @@ def start(config):
                                     "<b>UNMUTE</b> the channel now 🤩 \n \n " \
                                     "<b>Message @highrollertraders now to enroll in premium.</b> \n \n " \
                                     "💎<b>CORNIX BOT AVAILABLE FOR FREE</b>💎"
-                await client.send_message(output_channel, newStr)
+                if((count%2) ==0):
+                    await client.send_message(output_channel, newStr)
 
             else:
                 print("*")
