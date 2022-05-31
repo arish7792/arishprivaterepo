@@ -28,7 +28,7 @@ def start(config):
             output_channel_entities.append(InputChannel(d.entity.id, d.entity.access_hash))
 
     if not output_channel_entities:
-        logger.error(f"Could not find any output channels in the user's dialogs")
+        logger.error(f"Could not find any output  channels in the user's dialogs")
         sys.exit(1)
 
     if not input_channels_entities:

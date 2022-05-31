@@ -12,7 +12,7 @@ input_channel_names:
 output_channel_names:
   - 'https://t.me/+SuuTOSu20zQ5MzRh'
 
-# The channel IDs that you'd like to forward messages from. (You can get a channel ID by forwarding any message from it to @userinfobot , and removing the -100 from the start )
+# The channel IDs that youd'd like to forward messages from. (You can get a channel ID by forwarding any message from it to @userinfobot , and removing the -100 from the start )
 input_channel_ids:
   - 1166649141
 
