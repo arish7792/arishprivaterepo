@@ -3,6 +3,7 @@ from telethon.tl.types import InputChannel
 import yaml
 import sys
 import logging
+import requests
 
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -72,6 +73,9 @@ def start(config):
                 event.text = event.text.replace(percentage, percentage1)
                 await client.send_message(output_channel, event.message)
             elif ("Phemex, ftx" in event.text):
+                response = requests.get("https://api.countapi.xyz/hit/arish/key")
+                responseJSON = response.json()
+                value = responseJSON['value']
                 string = event.text.split()[0]
                 client.parse_mode = 'html'
                 newStr = "🤩 <b>PREMIUM GROUP SIGNAL ALERT</b> 🤩 \n \n " \
@@ -81,8 +85,8 @@ def start(config):
                                     "<b>UNMUTE</b> the channel now 🤩 \n \n " \
                                     "<b>Message @highrollertraders now to enroll in premium.</b> \n \n " \
                                     "💎<b>CORNIX BOT AVAILABLE FOR FREE</b>💎"
-                await client.send_message(output_channel, newStr)
-
+                if((value%2)==0):
+                    await client.send_message(output_channel, newStr)
             else:
                 print("*")
 
