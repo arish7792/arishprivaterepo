@@ -41,7 +41,7 @@ def start(config):
                 percentage = event.text[indexStart:indexEnd]
                 Float = float(percentage)
                 Float = Float+15
-                percentage1 = str(Float)
+                percentage1 = str("{:.2f}".format(Float))
                 event.text = event.text.replace(percentage, percentage1)
                 await client.send_message(output_channel, event.message)
             elif ("Take-Profit target 2" in event.text):
@@ -50,7 +50,7 @@ def start(config):
                 percentage = event.text[indexStart:indexEnd]
                 Float = float(percentage)
                 Float = Float+30
-                percentage1 = str(Float)
+                percentage1 = str("{:.2f}".format(Float))
                 event.text = event.text.replace(percentage, percentage1)
                 await client.send_message(output_channel, event.message)
             elif ("Take-Profit target 3" in event.text):
@@ -59,7 +59,7 @@ def start(config):
                 percentage = event.text[indexStart:indexEnd]
                 Float = float(percentage)
                 Float = Float+50
-                percentage1 = str(Float)
+                percentage1 = str("{:.2f}".format(Float))
                 event.text = event.text.replace(percentage, percentage1)
                 await client.send_message(output_channel, event.message)
             elif ("All take-profit targets" in event.text):
@@ -68,7 +68,7 @@ def start(config):
                 percentage = event.text[indexStart:indexEnd]
                 Float = float(percentage)
                 Float = Float+75
-                percentage1 = str(Float)
+                percentage1 = str("{:.2f}".format(Float))
                 event.text = event.text.replace(percentage, percentage1)
                 await client.send_message(output_channel, event.message)
             elif ("Phemex, ftx" in event.text):
