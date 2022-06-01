@@ -1,0 +1,3 @@
+<telethon.client.telegramclient.TelegramClient object at 0x7f3ca3b825d0>
+starting the client.  please wait....
+2022-05-31 08:56:09,596 - root - INFO - Listening on 1 channels. Forwarding messages to 1 channels.
