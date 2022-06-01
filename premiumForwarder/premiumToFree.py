@@ -10,6 +10,19 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(level
 logging.getLogger('telethon').setLevel(level=logging.WARNING)
 logger = logging.getLogger(__name__)
 
+def increment():
+    with open('/home/ec2-user/premiumForwarder/count.txt', 'r+') as f:
+        lines = f.readlines()
+        curr = int(lines[0])
+        incr = curr+1
+        f.seek(0)
+        f.truncate()
+        lines[0] = str(incr)
+        f.write(lines[0])
+        if ((incr%2)==0):
+            return "even"
+        return "odd"
+
 def start(config):
     client = TelegramClient(config["session_name"], config["api_id"], config["api_hash"])
     client.start()
@@ -73,9 +86,7 @@ def start(config):
                 event.text = event.text.replace(percentage, percentage1)
                 await client.send_message(output_channel, event.message)
             elif ("Phemex, ftx" in event.text):
-                response = requests.get("https://api.countapi.xyz/hit/arish/key")
-                responseJSON = response.json()
-                value = responseJSON['value']
+                value = increment()
                 string = event.text.split()[0]
                 client.parse_mode = 'html'
                 newStr = "🤩 <b>PREMIUM GROUP SIGNAL ALERT</b> 🤩 \n \n " \
@@ -85,7 +96,7 @@ def start(config):
                                     "<b>UNMUTE</b> the channel now 🤩 \n \n " \
                                     "<b>Message @highrollertraders now to enroll in premium.</b> \n \n " \
                                     "💎<b>CORNIX BOT AVAILABLE FOR FREE</b>💎"
-                if((value%2)==0):
+                if(value=="even"):
                     await client.send_message(output_channel, newStr)
             else:
                 print("*")
